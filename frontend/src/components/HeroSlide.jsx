@@ -6,7 +6,7 @@ import {
     Chip, Divider,
     Stack, Typography, useTheme
 } from "@mui/material";
-// import { Autoplay } from "swiper";
+import { Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { toast } from "react-toastify";
 
@@ -32,6 +32,7 @@ const HeroSlide = ({ mediaType, mediaCategory }) => {
     const [genres, setGenres] = useState([]);
 
     useEffect(() => {
+        // Lấy ra danh sách các movie
         const getMedias = async () => {
             const { response, err } = await mediaApi.getList({
                 mediaType,
@@ -81,12 +82,12 @@ const HeroSlide = ({ mediaType, mediaCategory }) => {
             <Swiper
                 grabCursor={true}
                 loop={true}
-                // modules={[Autoplay]}
+                modules={[Autoplay]}
                 style={{ width: "100%", height: "max-content" }}
-            // autoplay={{
-            //     delay: 3000,
-            //     disableOnInteraction: false
-            // }}
+                autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false
+                }}
             >
                 {movies.map((movie, index) => (
                     <SwiperSlide key={index}>
